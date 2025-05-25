@@ -61,13 +61,13 @@ RUN \
   echo "**** install calibre-web ****" && \
   # STEP 1.2 - Check that $CALIBREWEB_RELEASE ARG is not none and if it is, sets the variables value to the most recent tag name
   if [ -z ${CALIBREWEB_RELEASE+x} ]; then \
-    CALIBREWEB_RELEASE=$(curl -sX GET "https://api.github.com/repos/janeczku/calibre-web/releases/latest" \
+    CALIBREWEB_RELEASE=$(curl -sX GET "https://api.github.com/repos/chrisjtwomey/calibre-web/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   # STEP 1.3 - Downloads the tarball of the release stored in $CALIBREWEB_RELEASE from CW's GitHub Repo, saving it into /tmp
   curl -o \
     /tmp/calibre-web.tar.gz -L \
-    https://github.com/janeczku/calibre-web/archive/${CALIBREWEB_RELEASE}.tar.gz && \
+    https://github.com/chrisjtwomey/calibre-web/archive/${CALIBREWEB_RELEASE}.tar.gz && \
   # STEP 1.4 - Makes /app/calibre-web to extract the downloaded files from the repo to, -p to ignore potential errors that could arise if the folder already existed
   mkdir -p \
     /app/calibre-web && \
